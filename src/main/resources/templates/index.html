@@ -52,20 +52,20 @@
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span>发起</h2>
             <hr>
-            <div class="media" th:each="question:${questions}">
+            <div class="media" th:each="question : ${questions}">
                 <div class="media-left">
                     <a href="#">
                         <img class="media-object img-rounded"
-                             src="https://avatars1.githubusercontent.com/u/35513973?v=4">
+                             th:src="${question.user.avatarUrl}">
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"></h4>
-                    <span></span><br>
+                    <h4 class="media-heading" th:text="${question.title}"></h4>
+                    <span th:text="${question.description}"></span><br>
                     <span class="text-desc">
-                        个回复
-                        次浏览
-                        <span></span>
+                        <span th:text="${question.commentCount}"></span>个回复
+                        <span th:text="${question.viewCount}"></span>次浏览
+                        <span th:text="${#dates.format(question.gmtCreate,'dd MMMM yyyy')}"></span>
                     </span>
                 </div>
             </div>

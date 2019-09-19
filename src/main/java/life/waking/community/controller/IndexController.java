@@ -23,7 +23,7 @@ public class IndexController {
     private UserMapper userMapper;
 
     @Autowired
-    private QuestionService QuestionService;
+    private QuestionService questionService;
 
     @GetMapping("/")
     public String index(HttpServletRequest request,
@@ -41,8 +41,8 @@ public class IndexController {
                 }
             }
 
-        List<QuestionDTO> questionList = QuestionService.list();
-        model.addAttribute("question",questionList);
+        List<QuestionDTO> questionList = questionService.list();
+        model.addAttribute("questions",questionList);
         return "index";
     }
 }
